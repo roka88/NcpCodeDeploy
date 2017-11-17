@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%-5p](%-35c{1}:%-3L) %m%n" />
+			<!-- %L 옵션은 라인넘버가 출력되나 속도저하가 심하다. -->
+			<!--<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%-5p](%-30c{1}) %m%n" />-->
+		</layout>
+	</appender>
+
+	<appender name="general" class="org.apache.log4j.DailyRollingFileAppender">
+		<!--  file backup frequency and backup file name -->
+		<param name="datePattern" value="'.'yyyy-MM-dd" />
+
+		<!--  log file path -->
+		<param name="File" value="/ncloud_api.log"/>
+
+		<layout class="org.apache.log4j.PatternLayout">
+		   <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%-5p](%F:%L) %m%n"/>
+		</layout>
+	</appender>
+
+	<logger name="com.ncloud" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="console" />
+<!-- 		<appender-ref ref="general"/> -->
+	</logger>
+
+	<root>
+		<level value="INFO" />
+<!-- 		<appender-ref ref="general"/> -->
+		<appender-ref ref="console" />
+	</root>
+</log4j:configuration>
