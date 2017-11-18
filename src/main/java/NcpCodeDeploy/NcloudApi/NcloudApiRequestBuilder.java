@@ -1,4 +1,4 @@
-package NcpCodeDeploy;
+package NcpCodeDeploy.NcloudApi;
 
 import com.ncloud.api.connection.NcloudApiRequest;
 

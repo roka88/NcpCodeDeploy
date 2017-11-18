@@ -1,5 +1,6 @@
-package NcpCodeDeploy;
+package NcpCodeDeploy.Deploy;
 
+import NcpCodeDeploy.Config.Config;
 import com.ncloud.api.connection.NcloudApiRequest;
 import com.roka.NcpDeploy.NcpExtendManager.AutoScalingGroupExtendManager;
 import com.roka.NcpDeploy.NcpExtendManager.InstanceImgExtendManager;
@@ -15,12 +16,12 @@ import com.roka.NcpDeploy.OtherManager.GitCloneManager;
 import com.roka.NcpDeploy.OtherManager.LogManager;
 import com.roka.NcpDeploy.OtherManager.UploadFileManager;
 import com.roka.NcpDeploy.PipeLine.OperationPipeLine;
-import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
 import java.util.concurrent.Executors;
 
 public class BlueGreanDeploy implements Deploy {
+
     @Override
     public void deploy(NcloudApiRequest ncloudApiRequest, Config config) {
 

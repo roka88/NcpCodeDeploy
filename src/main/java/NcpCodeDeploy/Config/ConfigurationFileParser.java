@@ -1,5 +1,6 @@
-package NcpCodeDeploy;
+package NcpCodeDeploy.Config;
 
+import NcpCodeDeploy.NcloudApi.NcloudApiRequestBuilder;
 import com.ncloud.api.connection.NcloudApiRequest;
 import org.slf4j.LoggerFactory;
 

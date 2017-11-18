@@ -1,4 +1,4 @@
-package NcpCodeDeploy;
+package NcpCodeDeploy.Config;
 
 import org.apache.commons.lang.StringUtils;
 

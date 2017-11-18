@@ -1,4 +1,4 @@
-package NcpCodeDeploy;
+package NcpCodeDeploy.Config;
 
 public class Config {
 
