@@ -213,3 +213,8 @@ Script 부분에 java -jar NcpCodeDeploy-*.jar /conf_file_path를 실행해준�
 ### NcpDeploy-*.jar
 
 <https://github.com/roka88/NcpDeployPipeLine>
+
+
+### NcpCodeDeploy-*.jar 실행파일
+
+<https://github.com/roka88/NcpCodeDeployFile>
