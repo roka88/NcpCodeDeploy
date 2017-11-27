@@ -3,12 +3,15 @@ package NcpCodeDeploy;
 
 import NcpCodeDeploy.Config.Config;
 import NcpCodeDeploy.Config.ConfigurationFileParser;
-import NcpCodeDeploy.Deploy.BlueGreanDeploy;
+import NcpCodeDeploy.Deploy.BlueGreenDeploy;
 import NcpCodeDeploy.Deploy.Deploy;
 import com.ncloud.api.connection.NcloudApiRequest;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 public class Main {
 
@@ -21,7 +24,7 @@ public class Main {
             return;
         }
 
-        Deploy blueGreanDeploy = new BlueGreanDeploy();
+        Deploy blueGreanDeploy = new BlueGreenDeploy();
 
         try {
             ConfigurationFileParser configurationFileParser = new ConfigurationFileParser();
@@ -30,8 +33,16 @@ public class Main {
             NcloudApiRequest ncloudApiRequest = configurationFileParser.getNcloudApiReqeust();
             Config config = configurationFileParser.getConfig();
 
+            Executor executors = Executors.newFixedThreadPool(2, new ThreadFactory() {
+                @Override
+                public Thread newThread(Runnable r) {
+                    Thread thread = new Thread(r);
+                    thread.setDaemon(true);
+                    return thread;
+                }
+            });
 
-            blueGreanDeploy.deploy(ncloudApiRequest, config);
+            blueGreanDeploy.deploy(ncloudApiRequest, config, executors);
 
         } catch (IOException e) {
             LoggerFactory.getLogger("main").info("ncp_deploy.conf is not found");

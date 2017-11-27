@@ -1,6 +1,5 @@
 # NcpCodeDeploy
 
----
 NcpDeployPipeLine 라이브러리를 사용하여 Jar 실행파일을 만듬. 환경설정 파일이 필요함
 <br />
 NcpCodeDeploy를 직접 만들고 싶을 시 NcpDeployPipeLine 라이브러리를 이용하면 된다.
@@ -8,6 +7,7 @@ NcpCodeDeploy를 직접 만들고 싶을 시 NcpDeployPipeLine 라이브러리�
 
 ### 변경점
 <pre>
+0.0.3 NcpDeploy 0.2 의존성 제거, NcpPipe 의존성 추가. 내부적으로 PipeLine을 CompletableFuture로 변경
 0.0.2 NcpDeploy 0.2 버전 의존
 0.0.1 초기버전
 </pre>
@@ -28,7 +28,7 @@ compile group: 'xpp3', name: 'xpp3_min', version: '1.1.4c'
 compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.2'
 compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.6.0'
 </pre>
-* NcpDeploy가 가져야 할 의존성
+* NcpPipe가 가져야 할 의존성
 
 <pre>
 compile files('libs/ncloud-api-0.2.5.jar')
@@ -38,7 +38,7 @@ compile group: 'org.apache.commons', name: 'commons-exec', version: '1.3'
 
 * NcpCodeDeploy가 가져야 할 의존성
 <pre>
-compile files('libs/NcpDeploy-0.0.2.jar')
+compile files('libs/NcpPipe-0.0.1.jar')
 </pre>
 
 ### 지원
