@@ -7,38 +7,27 @@ NcpCodeDeploy를 직접 만들고 싶을 시 NcpDeployPipeLine 라이브러리�
 
 ### 변경점
 <pre>
+0.0.4 NcpPipe 0.2 버전업, ncloud-api-1.0.2-SNAPSHOT-jar-with-dependencies.jar 의존성 추가
 0.0.3 NcpDeploy 0.2 의존성 제거, NcpPipe 의존성 추가. 내부적으로 PipeLine을 CompletableFuture로 변경
 0.0.2 NcpDeploy 0.2 버전 의존
 0.0.1 초기버전
 </pre>
 
 ### 의존성
-* ncloud-api-0.2.5.jar 가 가져야 할 의존성
-<pre>
-compile group: 'commons-codec', name: 'commons-codec', version: '1.4'
-compile group: 'commons-lang', name: 'commons-lang', version: '2.3'
-compile group: 'commons-logging', name: 'commons-logging', version: '1.1.1'
-compile group: 'org.codehaus.jettison', name: 'jettison', version: '1.3.3'
-compile group: 'com.jcraft', name: 'jsch', version: '0.1.44-1'
-compile group: 'log4j', name: 'log4j', version: '1.2.14'
-compile group: 'org.slf4j', name: 'slf4j-api', version: '1.6.0'
-compile group: 'stax', name: 'stax-api', version: '1.0.1'
-compile group: 'xmlpull', name: 'xmlpull', version: '1.1.3.1'
-compile group: 'xpp3', name: 'xpp3_min', version: '1.1.4c'
-compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.2'
-compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.6.0'
-</pre>
+
+
 * NcpPipe가 가져야 할 의존성
 
 <pre>
-compile files('libs/ncloud-api-0.2.5.jar')
-compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.9.0.201710071750-r'
+compile files('libs/ncloud-api-1.0.2-SNAPSHOT-jar-with-dependencies.jar')
 compile group: 'org.apache.commons', name: 'commons-exec', version: '1.3'
+compile group: 'com.jcraft', name: 'jsch', version: '0.1.44-1'
+compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.9.0.201710071750-r'
 </pre>
 
 * NcpCodeDeploy가 가져야 할 의존성
 <pre>
-compile files('libs/NcpPipe-0.0.1.jar')
+compile files('libs/NcpPipe-0.0.2.jar')
 </pre>
 
 ### 지원
@@ -210,10 +199,9 @@ Script 부분에 java -jar NcpCodeDeploy-*.jar /conf_file_path를 실행해준�
 </pre>
 
 
-### NcpDeploy-*.jar
+### NcpPipe-*.jar
 
-<https://github.com/roka88/NcpDeployPipeLine>
-
+<https://github.com/roka88/NcpPipe>
 
 ### NcpCodeDeploy-*.jar 실행파일
 

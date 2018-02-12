@@ -18,25 +18,29 @@ public class ConfigurationFileParser {
 
 
         File file = new File(confFilePath + "/ncp_deploy.conf");
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-        String line;
-        LoggerFactory.getLogger(this.getClass()).info("-------------- Configuration -------------");
-        while ((line = bufferedReader.readLine()) != null) {
-            boolean isComment = line.trim().startsWith("#");
+        if (file.exists()) {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String line;
+            LoggerFactory.getLogger(this.getClass()).info("-------------- Configuration -------------");
+            while ((line = bufferedReader.readLine()) != null) {
+                boolean isComment = line.trim().startsWith("#");
 
-            if (!isComment) {
-                boolean isConfig = line.matches("^.+=.+$");
-                if (isConfig) {
-                    String[] configTokens = line.split("=");
-                    String configName = configTokens[0].trim();
-                    String configValue = configTokens[1].trim();
-                    configMap.put(configName, configValue);
-                    LoggerFactory.getLogger(this.getClass()).info(configName + " is " + configValue);
+                if (!isComment) {
+                    boolean isConfig = line.matches("^.+=.+$");
+                    if (isConfig) {
+                        String[] configTokens = line.split("=");
+                        String configName = configTokens[0].trim();
+                        String configValue = configTokens[1].trim();
+                        configMap.put(configName, configValue);
+                        LoggerFactory.getLogger(this.getClass()).info(configName + " is " + configValue);
+                    }
                 }
             }
+            bufferedReader.close();
+            LoggerFactory.getLogger(this.getClass()).info("-------------------------------------------");
+        } else {
+            throw new IOException("ncp_deploy.conf is not exist");
         }
-        bufferedReader.close();
-        LoggerFactory.getLogger(this.getClass()).info("-------------------------------------------");
 
 
         return configMap;
